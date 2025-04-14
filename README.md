@@ -44,6 +44,3 @@ These modalities provide a comprehensive view of tissues, helping in the diagnos
 | psad | The PSA density. |
 
 ---
-
-Open Questions:
-1. How do we validate if the model has correctly generated required PSA and volume? Can we establish a correlation between dataset volume and pixel based volume?

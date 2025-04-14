@@ -1,0 +1,36 @@
+vqgan_ckpt: /home/sr2369/cspca/checkpoints_normalized_output_old/epoch_epoch=459_step_step=122602.ckpt
+default_root_dir: /home/sr2369/cspca
+voxel_dir: max_area_3d_voxel
+
+# Have to be derived from VQ-GAN Latent space dimensions
+diffusion_img_size: 64
+diffusion_depth_size: 8
+diffusion_num_channels: 8
+dim_mults: [1, 2, 4, 8]
+attn_heads: 8
+init_kernel_size: 7
+results_folder: /home/sr2369/cspca/ddpm_results
+results_folder_postfix: ddpm_results_01_21_25
+load_milestone: /home/sr2369/cspca/ddpm_results/ddpm_results_01_21_25/model-662.pt
+# load_milestone: False
+
+batch_size: 23
+num_workers: 8
+logger: wandb
+objective: pred_x0
+save_and_sample_every: 500
+denoising_fn: Unet3D
+train_lr: 0.00003
+timesteps: 1000 # number of steps
+sampling_timesteps: 250 # number of sampling timesteps (using ddim for faster inference [see citation for ddim paper])
+loss_type: l1 # L1 or L2
+train_num_steps: 700000 # total training steps
+gradient_accumulate_every: 1 # gradient accumulation steps
+ema_decay: 0.999 # exponential moving average decay
+amp: False # turn on mixed precision
+num_sample_rows: 1
+gpus: 1
+
+cond_dim: 64
+num_features: 2
+normalize: False

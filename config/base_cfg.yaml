@@ -1,0 +1,3 @@
+defaults:
+  - model: ddpm_no_latent
+  - dataset: prostate_mri

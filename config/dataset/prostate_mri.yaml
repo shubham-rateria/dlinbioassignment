@@ -1,0 +1,5 @@
+name: prostate_mri
+root_dir: None
+image_channels: 1
+augmentation: False
+img_size: 128

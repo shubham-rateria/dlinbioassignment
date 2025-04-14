@@ -1,0 +1,38 @@
+vqgan_ckpt: /home/sr2369/inpainting/checkpoints_normalized_output_c128/epoch_epoch=479_step_step=243160.ckpt
+default_root_dir: /home/sr2369/inpainting
+voxel_dir: max_area_3d_voxel
+
+# Have to be derived from VQ-GAN Latent space dimensions
+diffusion_img_size: 64
+diffusion_depth_size: 12
+diffusion_num_channels: 128
+init_dim: 256
+dim_mults: [1, 1, 2, 2, 4, 8]
+attn_heads: 4
+init_kernel_size: 7
+results_folder: /home/sr2369/inpainting/ddpm_results
+results_folder_postfix: ddpm_results_03_10_25_all_cond
+description: This model generates images with all the conditions (cancer, psa, gland_vol, age).
+load_milestone: 
+# load_milestone: False
+
+batch_size: 6
+num_workers: 8
+logger: wandb
+objective: pred_x0
+save_and_sample_every: 1000
+denoising_fn: Unet3D
+train_lr: 0.000008
+timesteps: 300 # number of steps
+sampling_timesteps: 250 # number of sampling timesteps (using ddim for faster inference [see citation for ddim paper])
+loss_type: l1 # L1 or L2
+train_num_steps: 700000 # total training steps
+gradient_accumulate_every: 1 # gradient accumulation steps
+ema_decay: 0.999 # exponential moving average decay
+amp: False # turn on mixed precision
+num_sample_rows: 1
+gpus: 1
+
+cond_dim: 512
+num_features: 4
+normalize: True
